@@ -1,0 +1,100 @@
+<form>
+    <fieldset>
+        <label>Nome (*)<input type="text" name="nome" [(ngModel)]="aluno.nome" required/></label>
+        <label>Nome Social<input type="text" name="nome_social" [(ngModel)]="aluno.nome_social"/></label>
+        <label>CPF do aluno (*)<input type="text" name="cpf" [(ngModel)]="aluno.cpf" required/></label>
+    </fieldset>
+    <fieldset>
+        <label>Data de Nascimento (*)<input type="date" name="data_nasc" [(ngModel)]="aluno.data_nasc" required/></label>
+        <label>Sexo (*)
+            <select name="genero" [(ngModel)]="aluno.genero" required>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+            </select>
+        </label>
+        <label>Cor/Raça (*)
+            <select name="cor" [(ngModel)]="aluno.cor" required>
+                <option value="Branca">Branca</option>
+                <option value="Preta">Preta</option>
+                <option value="Parda">Parda</option>
+                <option value="Amarela">Amarela</option>
+                <option value="Indígena">Indígena</option>
+            </select>
+        </label>
+    </fieldset>
+    <fieldset>
+        <label>E-mail (*)<input type="email" name="e_mail" [(ngModel)]="aluno.e_mail" required placeholder="a@a.aaa"/></label>
+        <label>Telefone(*)<input type="tel" name="telefone" [(ngModel)]="aluno.telefone" required placeholder="(--) 0000-0000" /></label>
+        <label>Nacionalidade(*)
+            <select name="nacionalidade" [(ngModel)]="aluno.nacionalidade" required>
+                <option value="Brasileiro">Brasileiro</option>
+                <option value="Estrangeiro">Estrangeiro</option>
+            </select>
+        </label>
+    </fieldset>
+    <hr>
+    <fieldset class="big_select">
+        <label>Possui deficiência, transtorno global de desenvolvimento ou altas habilidades/superdotação? (*)
+            <select name="possui_defic" [(ngModel)]="aluno.possui_defic" required>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+        </label>
+    </fieldset>
+    <fieldset class="big_select">
+        <label>Estudade possui necessidade de recursos adicionais para participação em avaliações? (*)
+            <select name="possui_neces" [(ngModel)]="aluno.possui_neces" required>
+                <option value="true">Sim</option>
+                <option value="false">Não</option>
+            </select>
+        </label>
+    </fieldset>
+    <label>Está em situação de itinerência? (*)
+        <input type="checkbox" name="situa_itiner" [(ngModel)]="aluno.situa_itiner" required/>
+    </label>
+    <hr>
+    <input type="submit" (click)="cadastrar()" value="Cadastrar">
+    <hr>
+</form>
+
+<h2>Lista de Alunos</h2>
+<hr>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Nome Social</th>
+        <th>CPF do aluno</th>
+        <th>Data de Nascimento</th>
+        <th>Sexo</th>
+        <th>Cor/Raça</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Nacionalidade</th>
+        <th>Possui deficiência, transtorno global de desenvolvimento ou altas habilidades/superdotação?</th>
+        <th>Estudade possui necessidade de recursos adicionais para participação em avaliações?</th>
+        <th>Está em situação de itinerência?</th>
+
+        <th>Ações</th>
+    </tr>
+    <tr *ngFor='let aluno of alunos'>
+        <td>{{aluno.id}}</td>
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.nome_social}}</td>
+        <td>{{aluno.cpf}}</td>
+        <td>{{aluno.data_nasc}}</td>
+        <td>{{aluno.genero}}</td>
+        <td>{{aluno.cor}}</td>
+        <td>{{aluno.e_mail}}</td>
+        <td>{{aluno.telefone}}</td>
+        <td>{{aluno.nacionalidade}}</td>
+        <td>{{aluno.possui_defic}}</td>
+        <td>{{aluno.possui_neces}}</td>
+        <td>{{aluno.situa_itiner}}</td>
+
+        <td><button (click)="atualizar(aluno.id)">Atualizar</button>
+            <button (click)="remover(aluno.id)">Remover</button>
+        </td>
+    </tr>
+</table>
